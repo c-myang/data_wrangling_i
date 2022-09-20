@@ -5,6 +5,8 @@ output: github_document
 
 ```{r, echo=FALSE}
 library(tidyverse)
+library(readxl)
+library(haven)
 ```
 # Data Import: CSVs
 
@@ -13,4 +15,65 @@ Let's import data using the 'readr' package.
 ```{r}
 litters_df = read_csv("data_import_examples/FAS_litters.csv")
 litters_df = janitor::clean_names(litters_df)
+
 ```
+
+Look at the data
+
+```{r}
+litters_df
+
+head(litters_df)
+tail(litters_df)
+
+```
+
+Use `view` function to open a new window of the data.
+```{r, eval=FALSE}
+view(litters_df)
+```
+
+Get a quick summary of the entire dataset using `skimr::skim()`
+```{r}
+skimr::skim(litters_df)
+```
+
+`read_csv` options...
+```{r}
+read_csv("data_import_examples/FAS_litters.csv", na = c("", "NA", 999, 88, skip = 2))
+
+```
+
+
+# Other file formats
+
+We need to read in an Excel spreadsheet (.xlsx) 
+```{r}
+mlb_df = read_excel("data_import_examples/mlb11.xlsx")
+```
+
+```{r, eval=FALSE}
+view(mlb_df)
+```
+
+Using range option in read_excel
+```{r}
+lotr_words = read_excel("data_import_examples/LotR_Words.xlsx", 
+                        range = "B3:D6")
+
+```
+
+
+# Still more formats...
+
+Read in a SAS dataset.
+```{r}
+pulse_df = read_sas("data_import_examples/public_pulse_data.sas7bdat")
+```
+
+# Data export
+```{r}
+write_csv(lotr_words, file = "data_import_examples/lotr_words_df.csv")
+```
+
+
