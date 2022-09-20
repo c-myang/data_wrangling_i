@@ -76,4 +76,11 @@ pulse_df = read_sas("data_import_examples/public_pulse_data.sas7bdat")
 write_csv(lotr_words, file = "data_import_examples/lotr_words_df.csv")
 ```
 
+# Why not base R??
+
+`Read.csv` is from base R. Avoid using this!
+
+```{r}
+dont_do_this_df = read.csv("data_import_examples/FAS_litters.csv")
+```
 
