@@ -7,3 +7,54 @@ date: "2022-09-22"
 ```{r setup, echo=FALSE}
 library(tidyverse)
 ```
+
+## Load in the FAS Litters Data
+
+```{r}
+litters_df = read_csv("./data_import_examples/FAS_litters.csv")
+litters_df = janitor::clean_names(litters_df)
+```
+## `Select`
+
+Choose some columns and not others.
+
+```{r}
+select(litters_df, group, gd0_weight)
+```
+I can select a range of columns using `:`
+```{r}
+select(litters_df, group, gd0_weight:gd_of_birth)
+```
+Can use `-` to keep all variables EXCEPT a specified variable
+```{r}
+select(litters_df, -litter_number)
+```
+
+Use select to rename columns
+
+```{r}
+select(litters_df, GROUP = group, LITTer_NUmBer = litter_number)
+```
+
+There is a dedicated function in `dplyr` to rename variables that does the same thing.
+```{r}
+rename(litters_df, GROUP = group, LITTer_NUmBer = litter_number)
+```
+
+Select helpers enhance the `select()` function
+```{r}
+select(litters_df, starts_with("gd"))
+```
+Move litter_number to the first variable, keep every other variable
+```{r}
+select(litters_df, litter_number, everything())
+```
+Relocate does the same thing, relocates `litter_number` to the first column
+```{r}
+relocate(litters_df, litter_number)
+```
+
+Select is the key function! Does a lot of the things you would need, although other functions exist and do similar things.
+
+
+
