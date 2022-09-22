@@ -102,6 +102,13 @@ mutate(
   wt_gain = gd18_weight - gd0_weight,
   group = str_to_lower(group)) # Modifies all observations in group to lowercase
 ```
+## `Arrange`
+
+Puts observations in a specified order. Not as commonly used as others.
+
+```{r}
+arrange(litters_df, pups_born_alive) #In ascending order
+```
 
 
 
