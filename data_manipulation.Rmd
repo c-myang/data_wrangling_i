@@ -1,0 +1,9 @@
+---
+title: "Data Manipulation"
+output: github_document
+date: "2022-09-22"
+---
+
+```{r setup, echo=FALSE}
+library(tidyverse)
+```
