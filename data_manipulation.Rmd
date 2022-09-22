@@ -88,3 +88,21 @@ filter(litters_df, group == "Mod8")
 filter(litters_df, group %in% c("Con7", "Mod8")) #Group contains Con7 or Mod8
 ```
 Real challenge in using filter is coming up with a way to specify the observations you want to keep!
+
+## `Mutate`
+
+Lets me modify an existing variable or create a new variable
+
+```{r}
+mutate(litters_df, wt_gain = gd18_weight - gd0_weight) #Create new variable wt_gain
+```
+```{r}
+mutate(
+  litters_df, 
+  wt_gain = gd18_weight - gd0_weight,
+  group = str_to_lower(group)) # Modifies all observations in group to lowercase
+```
+
+
+
+
