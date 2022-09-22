@@ -56,5 +56,35 @@ relocate(litters_df, litter_number)
 
 Select is the key function! Does a lot of the things you would need, although other functions exist and do similar things.
 
+## `Filter`
 
+Removes rows or keeps rows that you intend to keep in your analysis.
 
+We can filter observations for which `gd0_weight < 22`.
+
+```{r}
+filter(litters_df, gd0_weight < 22)
+```
+
+There are several logical operators we can use.
+
+`==` is the test for equality, NOT a single equal sign, which is used to assign variables!
+
+```{r}
+filter(litters_df, gd_of_birth == 20)
+```
+Putting `!` outside logical operation gives you the inverse. Alternatively, you can use `!=`.
+```{r}
+filter(litters_df, !(gd_of_birth == 20))
+filter(litters_df, gd_of_birth != 20)
+
+```
+Putting `!` outside logical operation is better for more complicated logical statements.
+```{r}
+filter(litters_df, gd0_weight >= 22, gd_of_birth == 20)
+```
+```{r}
+filter(litters_df, group == "Mod8")
+filter(litters_df, group %in% c("Con7", "Mod8")) #Group contains Con7 or Mod8
+```
+Real challenge in using filter is coming up with a way to specify the observations you want to keep!
